@@ -4,6 +4,7 @@
  */
 package ViewModels;
 
+import Conect.ConectBD;
 import Library.Objects;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class ClientsViewModel {
     public ClientsViewModel(Object[] objects, ArrayList<JLabel> labels, ArrayList<JTextField> textFiled) {
         _labels = labels;
         _textFields = textFiled;
-        
+        new ConectBD();
     }
     /*
     * NO PUEDE ESTAR VACÍO EL CAMPO PARA EL 
