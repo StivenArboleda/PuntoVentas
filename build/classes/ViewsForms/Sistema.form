@@ -33,7 +33,7 @@
           <Component id="jTabbedPane_principal" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="94" max="-2" attributes="0"/>
+              <Component id="ButtonCliente" min="-2" pref="94" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -43,7 +43,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" pref="60" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="ButtonCliente" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane_principal" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cooper Black" size="42" style="1"/>
+              <Font name="Corbel" size="42" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -136,7 +136,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1517" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1544" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -163,7 +163,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="1166" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="1193" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jPanel4" max="32767" attributes="0"/>
                       </Group>
@@ -177,8 +177,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <Component id="jPanel5" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -292,8 +292,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane_cliente" min="-2" pref="432" max="-2" attributes="0"/>
-                          <EmptySpace pref="24" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane_cliente" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -319,10 +319,13 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPanel6KeyReleased"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Clientes">
-                            <Property name="tabTitle" type="java.lang.String" value="Clientes"/>
+                          <JTabbedPaneConstraints tabName="Registro clientes">
+                            <Property name="tabTitle" type="java.lang.String" value="Registro clientes"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -336,38 +339,38 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="TextFieldCliente_telefono" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                                              <Component id="LabelCliente_Telefono" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
                                               <Component id="ButtonCliente_Add" alignment="1" min="-2" pref="94" max="-2" attributes="0"/>
+                                              <Component id="LabelCliente_Telefono" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="ButtonCliente_Cancel" min="-2" pref="94" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="81" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jTextField_FindClient3" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                                                      <Component id="LabelCliente_Apellido" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jTextField_FindClient3" pref="136" max="32767" attributes="0"/>
+                                                      <Component id="LabelCliente_Apellido" max="32767" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="TextFieldCliente_email" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                                                      <Component id="LabelCliente_Email" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                                                      <Component id="LabelCliente_Direccion" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                                                      <Component id="TextFieldCliente_direccion" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="TextFieldCliente_email" alignment="0" pref="136" max="32767" attributes="0"/>
+                                                      <Component id="TextFieldCliente_direccion" alignment="0" pref="136" max="32767" attributes="0"/>
+                                                      <Component id="LabelCliente_Email" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="LabelCliente_Direccion" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="TextFieldCliente_ID" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                                                          <Component id="LabelCliente_ID" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                          <Component id="TextFieldCliente_ID" max="32767" attributes="0"/>
+                                                          <Component id="LabelCliente_ID" pref="136" max="32767" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="TextFieldCliente_name" min="-2" pref="136" max="-2" attributes="0"/>
-                                                          <Component id="LabelCliente_name" min="-2" pref="76" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="TextFieldCliente_name" pref="136" max="32767" attributes="0"/>
+                                                          <Component id="LabelCliente_name" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
@@ -379,7 +382,7 @@
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -425,12 +428,12 @@
                                       <Component id="TextFieldCliente_telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="TextFieldCliente_direccion" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                                  <EmptySpace pref="56" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ButtonCliente_Add" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ButtonCliente_Cancel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ButtonCliente_Cancel" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="ButtonCliente_Add" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -464,7 +467,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" min="-2" pref="118" max="-2" attributes="0"/>
+                                      <Component id="LabelImageCliente" min="-2" pref="118" max="-2" attributes="0"/>
                                       <EmptySpace pref="20" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -473,14 +476,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel6" pref="86" max="32767" attributes="0"/>
+                                      <Component id="LabelImageCliente" pref="86" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel6">
+                            <Component class="javax.swing.JLabel" name="LabelImageCliente">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="IMAGEN CARGAR"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -492,6 +495,9 @@
                                   <Color id="Hand Cursor"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LabelImageClienteMouseClicked"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -515,6 +521,10 @@
                               <Font name="Segoe UI" size="14" style="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_IDKeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_IDKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="LabelCliente_name">
                           <Properties>
@@ -536,6 +546,11 @@
                               <Font name="Segoe UI" size="14" style="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_nameKeyPressed"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_nameKeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_nameKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="LabelCliente_Apellido">
                           <Properties>
@@ -557,6 +572,10 @@
                               <Font name="Segoe UI" size="14" style="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_FindClient3KeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_FindClient3KeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="LabelCliente_Email">
                           <Properties>
@@ -578,6 +597,9 @@
                               <Font name="Segoe UI" size="14" style="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_emailKeyReleased"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="LabelCliente_Telefono">
                           <Properties>
@@ -599,6 +621,10 @@
                               <Font name="Segoe UI" size="14" style="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_telefonoKeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_telefonoKeyTyped"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="LabelCliente_Direccion">
                           <Properties>
@@ -620,6 +646,9 @@
                               <Font name="Segoe UI" size="14" style="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_direccionKeyReleased"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="ButtonCliente_Cancel">
                           <Properties>
@@ -630,7 +659,7 @@
                               <Color blue="66" green="66" red="66" type="rgb"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/Resources/people.png"/>
+                              <Image iconType="3" name="/Resources/Cancel.png"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="null"/>
@@ -652,7 +681,7 @@
                               <Color blue="66" green="66" red="66" type="rgb"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/Resources/people.png"/>
+                              <Image iconType="3" name="/Resources/Add.png"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="null"/>
@@ -697,7 +726,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="ButtonCliente">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -716,7 +745,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonClienteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
