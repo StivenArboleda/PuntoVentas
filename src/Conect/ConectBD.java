@@ -27,8 +27,7 @@ public class ConectBD {
             /* Class.forName("com.mysql.jdbc.Driver");
              conn = DriverManager.getConnection(this.urlMysql, this.user, this.password);*/
             
-            //Conexion a SQL Server
-            //obtenemos el driver de para SQL Server
+            //Conexion por medio de SQL Server
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn =DriverManager.getConnection(urlSQL);
              if (conn != null) {

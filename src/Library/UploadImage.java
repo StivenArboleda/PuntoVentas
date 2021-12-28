@@ -5,7 +5,14 @@
 package Library;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -34,14 +41,36 @@ public class UploadImage extends JFrame{
         int answer = openFile.showOpenDialog(this);
         if(answer == JFileChooser.APPROVE_OPTION){
             file = openFile.getSelectedFile();
-            urlOrigen = file.getAbsolutePath();
-            Image photo = getToolkit().getImage(urlOrigen);
-            photo = photo.getScaledInstance(140, 140, 1);
-            label.setIcon(new ImageIcon(photo));
-            imageByte = new byte[(int) file.length()];
-            
+                urlOrigen = file.getAbsolutePath();
+                Image photo = getToolkit().getImage(urlOrigen);
+                photo = photo.getScaledInstance(140, 140, 1);
+                label.setIcon(new ImageIcon(photo));
+                
+            try {
+                BufferedImage bImage = ImageIO.read(file);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ImageIO.write(bImage, "png", bos);
+                imageByte = bos.toByteArray();
+            } catch (IOException ex) {
+                
+            }
+                        
+        }
+    }
+    
+    public byte [] getTransFoto(JLabel label){
+        ByteArrayOutputStream baos = null;
+        
+        try {
+            Icon ico = label.getIcon();
+            BufferedImage bufferedImage = new BufferedImage(ico.getIconWidth(), ico.getIconHeight(),
+                    BufferedImage.TYPE_INT_RGB);
+            baos = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", baos);
+        } catch (IOException e) {
             
         }
+        return baos.toByteArray();
     }
     
 }
