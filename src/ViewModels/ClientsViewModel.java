@@ -7,6 +7,8 @@ package ViewModels;
 import Conect.Consult;
 import Library.Calendario;
 import Library.Objects;
+import Library.Paginador;
+import Library.Render_CheckBox;
 import Library.UploadImage;
 import Models.TClientes;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
@@ -37,17 +39,22 @@ public class ClientsViewModel extends Consult {
     private final JCheckBox _checkBoxCredito;
     private final JTable _tableClient;
     private DefaultTableModel modelo1;
-    private int idCliente = 0;
-    private int _reg_por_pagina = 10, _num_pag = 1;
+    private final int idCliente = 0;
+    private final int _reg_por_pagina = 10, _num_pag = 1;
+    
+    private Paginador<TClientes> _paginadorClientes;
+    private int seccion;
     
     public ClientsViewModel(Object[] objects, ArrayList<JLabel> labels, ArrayList<JTextField> textFiled) {
         _labels = labels;
         _textFields = textFiled;
         _checkBoxCredito = (JCheckBox) objects[0];
         _tableClient = (JTable) objects[1];
-        
+        restart();
     }
-
+    
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE REGISTRAR CLIENTE">
+    
     /*
     * NO PUEDE ESTAR VACÍO EL CAMPO PARA EL 
     * ID, NOMBRE, APELLIDO, TELEFONO, EMAIL Y DIRECCION
@@ -176,11 +183,44 @@ public class ClientsViewModel extends Consult {
         int inicio = (_num_pag -1) * _reg_por_pagina;
         
         if(campo.equals("")){
-            
+            clientesFilter = clientes().stream().skip(inicio).limit(_reg_por_pagina)
+                            .collect(Collectors.toList());
+        }else{
+            clientesFilter = clientes().stream().filter(C -> C.getNumeroIdentidad().startsWith(campo) ||
+                             C.getNombre().startsWith(campo) || C.getApellido().startsWith(campo)).skip(inicio).limit(_reg_por_pagina)
+                             .collect(Collectors.toList());
         }
+        if(!clientesFilter.isEmpty()){
+            clientesFilter.forEach(item->{
+                Object[] registros = {
+                
+                    item.getID(),
+                    item.getNumeroIdentidad(),
+                    item.getNombre(),
+                    item.getApellido(),
+                    item.getEmail(),
+                    item.getDireccion(),
+                    item.getTelefono(),
+                    item.isCredito(),
+                    item.getImagen()
+                };
+                 modelo1.addRow(registros);
+            });
+            _tableClient.setModel(modelo1);
+            _tableClient.setRowHeight(30);
+            _tableClient.getColumnModel().getColumn(0).setMaxWidth(0);  //OCULTAR EL ID DEL REGISTRO
+            _tableClient.getColumnModel().getColumn(0).setMinWidth(0);
+            _tableClient.getColumnModel().getColumn(0).setPreferredWidth(0);
+            _tableClient.getColumnModel().getColumn(8).setMaxWidth(0);  //OCULTAR LA IMAGEN
+            _tableClient.getColumnModel().getColumn(8).setMinWidth(0);
+            _tableClient.getColumnModel().getColumn(8).setPreferredWidth(0);
+             _tableClient.getColumnModel().getColumn(7).setCellRenderer(new Render_CheckBox());
+        }
+            
     }
     
     public final void restart(){
+        seccion = 1;
         _accion = "insert";
         _textFields.get(0).setText("");
         _textFields.get(1).setText("");
@@ -210,6 +250,29 @@ public class ClientsViewModel extends Consult {
         _labels.get(5).setText("Dirección");
         _labels.get(5).setForeground(new Color(102, 102, 102));
         
-        _labels.get(6).setIcon(new ImageIcon(getClass().getClassLoader().getResource("Reources/dog-png.png")));
+       // _labels.get(6).setIcon(new ImageIcon(getClass().getClassLoader().getResource("Reources/dog-png.png")));
+        
+       _paginadorClientes = new Paginador<TClientes> (clientes(), _labels.get(7), _reg_por_pagina);
+        searchCLient("");
     }
+    
+    // </editor-fold>
+    
+    public void paginador (String metodo){
+        
+        switch (metodo) {
+            case "Primero":
+                switch (seccion) {
+                    case 1:
+                        _num_pag = _paginadorClientes;
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
 }
