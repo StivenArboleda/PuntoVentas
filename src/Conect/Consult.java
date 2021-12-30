@@ -5,6 +5,7 @@
 package Conect;
 
 import Models.TClientes;
+import Models.TConfiguration;
 import Models.TReportes_clientes;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -53,5 +54,16 @@ public class Consult extends ConectBD{
             System.out.println("Error :" + e);
         }
         return reportes;
+    }
+    
+    public List<TConfiguration> config(){
+        List<TConfiguration> config = new ArrayList();
+        try {
+            config = (List<TConfiguration>) QR.query(getConn(), "SELECT * FROM tconfiguration", 
+                                            new BeanListHandler(TConfiguration.class));
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        return config;
     }
 }

@@ -6,6 +6,7 @@ package ViewModels;
 
 import Conect.Consult;
 import Library.Calendario;
+import Library.FormatDecimal;
 import Library.Objects;
 import Library.Paginador;
 import Library.Render_CheckBox;
@@ -36,7 +37,7 @@ import org.apache.commons.dbutils.handlers.ColumnListHandler;
  */
 public class ClientsViewModel extends Consult {
 
-    private String _accion = "insert";
+    private String _accion = "insert", _mony;
     private final ArrayList<JLabel> _labels;
     private final ArrayList<JTextField> _textFields;
     private final JCheckBox _checkBoxCredito;
@@ -48,7 +49,9 @@ public class ClientsViewModel extends Consult {
     private int _num_pag = 1;
 
     private Paginador<TClientes> _paginadorClientes;
-    private int seccion;
+    private Paginador<TReportes_clientes> _paginadorReportes;
+    public int seccion;
+    private final FormatDecimal _format;
 
     public ClientsViewModel(Object[] objects, ArrayList<JLabel> labels, ArrayList<JTextField> textFiled) {
         _labels = labels;
@@ -57,6 +60,7 @@ public class ClientsViewModel extends Consult {
         _tableClient = (JTable) objects[1];
         _spinnerPaginas = (JSpinner) objects[2];
         _tableReporte = (JTable) objects[3];
+        _format = new FormatDecimal();
         restart();
         restartReport();
     }
@@ -355,8 +359,6 @@ public class ClientsViewModel extends Consult {
     }
 
     // </editor-fold>
-    
-    
     // <editor-fold defaultstate="collapsed" desc="PAGOS Y REPORTES">
     public void searchReports(String valor) {
         String[] titulos = {"ID", "Numero Identidad", "Nombre", "Apellido", "Deuda actual", "Fecha deuda", "Último pago", "Fecha pago", "Ticket", "Fecha límite"};
@@ -397,13 +399,29 @@ public class ClientsViewModel extends Consult {
     }
 
     public final void restartReport() {
+        listReportes = reportesClientes();
+        if (!listReportes.isEmpty()) {
+            _paginadorReportes = new Paginador<>(listReportes, _labels.get(7), _reg_por_pagina);
+        }
         searchReports("");
     }
 
+    public void getReportClient() {
+        int fila = _tableReporte.getSelectedRow();
+        _idCliente = (Integer) modelo2.getValueAt(fila, 0);
+        String nombre = (String) modelo2.getValueAt(fila, 2);
+        String apellido = (String) modelo2.getValueAt(fila, 3);
+        _labels.get(8).setText(nombre + " " + apellido);
+        _labels.get(9).setText(_mony + _format.decimal((Double) modelo2.getValueAt(fila, 4)));
+        _labels.get(10).setText((String) modelo2.getValueAt(fila, 5));
+        _labels.get(11).setText(_mony + _format.decimal((Double) modelo2.getValueAt(fila, 6)));
+        _labels.get(12).setText((String) modelo2.getValueAt(fila, 7));
+        _labels.get(13).setText((String) modelo2.getValueAt(fila, 8));
+    }
+
     // </editor-fold>
-    
-    
     private List<TClientes> listClients;
+    private List<TReportes_clientes> listReportes;
 
     public void paginador(String metodo) {
 
@@ -412,6 +430,11 @@ public class ClientsViewModel extends Consult {
                 switch (seccion) {
                     case 1:
                         if (!listClients.isEmpty()) {
+                            _num_pag = _paginadorClientes.primero();
+                        }
+                        break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
                             _num_pag = _paginadorClientes.primero();
                         }
                         break;
@@ -424,12 +447,22 @@ public class ClientsViewModel extends Consult {
                             _num_pag = _paginadorClientes.anterior();
                         }
                         break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
+                            _num_pag = _paginadorClientes.anterior();
+                        }
+                        break;
                 }
                 break;
             case "Siguiente":
                 switch (seccion) {
                     case 1:
                         if (!listClients.isEmpty()) {
+                            _num_pag = _paginadorClientes.next();
+                        }
+                        break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
                             _num_pag = _paginadorClientes.next();
                         }
                         break;
@@ -442,12 +475,20 @@ public class ClientsViewModel extends Consult {
                             _num_pag = _paginadorClientes.ultimo();
                         }
                         break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
+                            _num_pag = _paginadorClientes.ultimo();
+                        }
+                        break;
                 }
                 break;
         }
         switch (seccion) {
             case 1:
                 searchCLient("");
+                break;
+            case 2:
+                searchReports("");
                 break;
         }
     }
@@ -456,10 +497,21 @@ public class ClientsViewModel extends Consult {
         _num_pag = 1;
         Number caja = (Number) _spinnerPaginas.getValue();
         _reg_por_pagina = caja.intValue();
-        if (!listClients.isEmpty()) {
-            _paginadorClientes = new Paginador<>(listClients, _labels.get(7), _reg_por_pagina);
-            searchCLient("");
+        switch (seccion) {
+            case 1:
+                if (!listClients.isEmpty()) {
+                    _paginadorClientes = new Paginador<>(listClients, _labels.get(7), _reg_por_pagina);
+                }
+                searchCLient("");
+                break;
+            case 2:
+                if (!listReportes.isEmpty()) {
+                    _paginadorReportes = new Paginador<>(listReportes, _labels.get(7), _reg_por_pagina);
+                }
+                searchReports("");
+                break;
         }
+
     }
 
 }
