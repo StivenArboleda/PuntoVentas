@@ -8,7 +8,7 @@ package Models;
  *
  * @author Stiven Arboleda
  */
-public class TClientes {
+public class TClientes{
     
     //atributos con el MISMO NOMBRE de la tabla TClientes en el SQLServer
     private int ID;

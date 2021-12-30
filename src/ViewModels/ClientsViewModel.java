@@ -11,6 +11,7 @@ import Library.Paginador;
 import Library.Render_CheckBox;
 import Library.UploadImage;
 import Models.TClientes;
+import Models.TReportes_clientes;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -39,9 +40,9 @@ public class ClientsViewModel extends Consult {
     private final ArrayList<JLabel> _labels;
     private final ArrayList<JTextField> _textFields;
     private final JCheckBox _checkBoxCredito;
-    private final JTable _tableClient;
-    private DefaultTableModel modelo1;
-    private JSpinner _spinnerPaginas;
+    private final JTable _tableClient, _tableReporte;
+    private DefaultTableModel modelo1, modelo2;
+    private final JSpinner _spinnerPaginas;
     private int _idCliente = 0;
     private int _reg_por_pagina = 10;
     private int _num_pag = 1;
@@ -55,7 +56,9 @@ public class ClientsViewModel extends Consult {
         _checkBoxCredito = (JCheckBox) objects[0];
         _tableClient = (JTable) objects[1];
         _spinnerPaginas = (JSpinner) objects[2];
+        _tableReporte = (JTable) objects[3];
         restart();
+        restartReport();
     }
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE REGISTRAR CLIENTE">
@@ -101,41 +104,84 @@ public class ClientsViewModel extends Consult {
                             List<TClientes> listID = clientes().stream().filter(u -> u.getNumeroIdentidad().equals(_textFields.get(0).getText())).
                                     collect(Collectors.toList());
                             count += listID.size();
+                            try {
+                                switch (_accion) {
+                                    case "insert":
 
-                            switch (_accion) {
-                                case "insert":
-                                        try {
-                                    if (count == 0) {
-                                        Insert();
-                                    } else {
-                                        if (!listEmail.isEmpty()) {
-                                            _labels.get(3).setText("Email ya registrado");
-                                            _labels.get(3).setForeground(Color.red);
-                                            _labels.get(3).requestFocus();
+                                        if (count == 0) {
+                                            saveData();
+                                        } else {
+                                            if (!listEmail.isEmpty()) {
+                                                _labels.get(3).setText("Email ya registrado");
+                                                _labels.get(3).setForeground(Color.red);
+                                                _labels.get(3).requestFocus();
+                                            }
+                                            if (!listID.isEmpty()) {
+                                                _labels.get(0).setText("ID ya registrado");
+                                                _labels.get(0).setForeground(Color.red);
+                                                _labels.get(0).requestFocus();
+                                            }
                                         }
-                                        if (!listID.isEmpty()) {
-                                            _labels.get(0).setText("ID ya registrado");
-                                            _labels.get(0).setForeground(Color.red);
-                                            _labels.get(0).requestFocus();
+                                        break;
+
+                                    case "update":
+                                        if (count == 2) {
+                                            if (listEmail.get(0).getID() == _idCliente
+                                                    && listID.get(0).getID() == _idCliente) {
+                                                saveData();
+                                            } else {
+                                                if (listID.get(0).getID() != _idCliente) {
+                                                    //_labels.get(0).setText("El ID ya está registrado");
+                                                    JOptionPane.showMessageDialog(null, "El ID ya está registrado", "PROBLEMA DE ID", JOptionPane.WARNING_MESSAGE);
+                                                    _labels.get(0).setForeground(Color.red);
+                                                    _labels.get(0).requestFocus();
+                                                }
+                                                if (listEmail.get(0).getID() != _idCliente) {
+                                                    //_labels.get(3).setText("El EMAIL ya está registrado");
+                                                    JOptionPane.showMessageDialog(null, "El EMAIL ya está registrado", "PROBLEMA DE EMAIL", JOptionPane.WARNING_MESSAGE);
+                                                    _labels.get(3).setForeground(Color.red);
+                                                    _labels.get(3).requestFocus();
+                                                }
+                                            }
+                                        } else {
+                                            if (count == 0) {
+                                                saveData();
+                                            } else {
+                                                if (!listID.isEmpty()) {
+                                                    if (listID.get(0).getID() == _idCliente) {
+                                                        saveData();
+                                                    } else {
+                                                        //_labels.get(0).setText("El ID ya está registrado");
+                                                        JOptionPane.showMessageDialog(null, "El ID ya está registrado", "PROBLEMA DE ID", JOptionPane.WARNING_MESSAGE);
+                                                        _labels.get(0).setForeground(Color.red);
+                                                        _labels.get(0).requestFocus();
+                                                    }
+                                                }
+                                                if (!listEmail.isEmpty()) {
+                                                    if (listEmail.get(0).getID() == _idCliente) {
+                                                        saveData();
+                                                    } else {
+                                                        //_labels.get(3).setText("El EMAIL ya está registrado");
+                                                        JOptionPane.showMessageDialog(null, "El EMAIL ya está registrado", "PROBLEMA DE EMAIL", JOptionPane.WARNING_MESSAGE);
+                                                        _labels.get(3).setForeground(Color.red);
+                                                        _labels.get(3).requestFocus();
+                                                    }
+                                                }
+                                            }
                                         }
-                                    }
-                                } catch (SQLServerException ex) {
-                                    JOptionPane.showMessageDialog(null, ex);
+                                        break;
                                 }
-                                break;
+                            } catch (SQLServerException ex) {
+                                JOptionPane.showMessageDialog(null, ex);
                             }
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
 
-    private void Insert() throws SQLException {
+    private void saveData() throws SQLException {
 
         try {
 
@@ -145,32 +191,57 @@ public class ClientsViewModel extends Consult {
             if (image == null) {
                 image = Objects.uploadImage.getTransFoto(_labels.get(6));
             }
-            String sqlCliente = "INSERT INTO tclientes(NumeroIdentidad, Nombre, Apellido, Email, Telefono, Direccion, Credito, Fecha, Imagen) VALUES (?,?,?,?,?,?,?,?,?)";
+            switch (_accion) {
+                case "insert":
 
-            Object[] dataCliente = {
-                _textFields.get(0).getText(),
-                _textFields.get(1).getText(),
-                _textFields.get(2).getText(),
-                _textFields.get(3).getText(),
-                _textFields.get(4).getText(),
-                _textFields.get(5).getText(),
-                _checkBoxCredito.isSelected(),
-                new Calendario().getFecha(),
-                image,};
-            qr.insert(getConn(), sqlCliente, new ColumnListHandler(), dataCliente);
+                    String sqlCliente = "INSERT INTO tclientes(NumeroIdentidad, Nombre, Apellido, Email, Telefono, Direccion, Credito, Fecha, Imagen) VALUES (?,?,?,?,?,?,?,?,?)";
 
-            String sqlReport = "INSERT INTO treportes_clientes (DeudaActual, FechaDeuda, UltimoPago, FechaPago, Ticket, FechaLimite, IdCliente) VALUES (?,?,?,?,?,?,?)";
+                    Object[] dataCliente = {
+                        _textFields.get(0).getText(),
+                        _textFields.get(1).getText(),
+                        _textFields.get(2).getText(),
+                        _textFields.get(3).getText(),
+                        _textFields.get(4).getText(),
+                        _textFields.get(5).getText(),
+                        _checkBoxCredito.isSelected(),
+                        new Calendario().getFecha(),
+                        image,};
+                    qr.insert(getConn(), sqlCliente, new ColumnListHandler(), dataCliente);
 
-            List<TClientes> cliente = clientes();
-            Object[] dataReport = {
-                0,
-                "--/--/--",
-                0,
-                "--/--/--",
-                0000000000,
-                "--/--/--",
-                cliente.get(cliente.size() - 1).getID(),};
-            qr.insert(getConn(), sqlReport, new ColumnListHandler(), dataReport);
+                    String sqlReport = "INSERT INTO treportes_clientes (DeudaActual, FechaDeuda, UltimoPago, FechaPago, Ticket, FechaLimite, IdCliente) VALUES (?,?,?,?,?,?,?)";
+
+                    List<TClientes> cliente = clientes();
+                    Object[] dataReport = {
+                        0,
+                        "--/--/--",
+                        0,
+                        "--/--/--",
+                        0000000000,
+                        "--/--/--",
+                        cliente.get(cliente.size() - 1).getID(),};
+                    qr.insert(getConn(), sqlReport, new ColumnListHandler(), dataReport);
+
+                    break;
+
+                case "update":
+                    Object[] dataCliente2 = {
+                        _textFields.get(0).getText(),
+                        _textFields.get(1).getText(),
+                        _textFields.get(2).getText(),
+                        _textFields.get(3).getText(),
+                        _textFields.get(4).getText(),
+                        _textFields.get(5).getText(),
+                        _checkBoxCredito.isSelected(),
+                        image,};
+
+                    String sqlClient2 = "UPDATE tclientes SET NumeroIdentidad = ?, Nombre = ?, Apellido = ?, "
+                            + "Email = ?, Telefono = ?, Direccion = ?, Credito = ?, Imagen = ? WHERE ID =" + _idCliente;
+
+                    qr.update(getConn(), sqlClient2, dataCliente2);
+
+                    break;
+            }
+
             getConn().commit();
             restart();
         } catch (SQLException e) {
@@ -222,7 +293,7 @@ public class ClientsViewModel extends Consult {
 
     }
 
-    public void getClients(){
+    public void getClients() {
         _accion = "update";
         int filas = _tableClient.getSelectedRow();
         _idCliente = (Integer) modelo1.getValueAt(filas, 0);
@@ -235,8 +306,7 @@ public class ClientsViewModel extends Consult {
         _checkBoxCredito.setSelected((Boolean) modelo1.getValueAt(filas, 7));
         Objects.uploadImage.byteImage(_labels.get(6), (byte[]) modelo1.getValueAt(filas, 8));
     }
-    
-    
+
     public final void restart() {
         seccion = 1;
         _accion = "insert";
@@ -285,6 +355,54 @@ public class ClientsViewModel extends Consult {
     }
 
     // </editor-fold>
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="PAGOS Y REPORTES">
+    public void searchReports(String valor) {
+        String[] titulos = {"ID", "Numero Identidad", "Nombre", "Apellido", "Deuda actual", "Fecha deuda", "Último pago", "Fecha pago", "Ticket", "Fecha límite"};
+        modelo2 = new DefaultTableModel(null, titulos);
+        int inicio = (_num_pag - 1) * _reg_por_pagina;
+        List<TReportes_clientes> reporteFilter;
+        if (valor.equals("")) {
+            reporteFilter = reportesClientes().stream().skip(inicio).limit(_reg_por_pagina)
+                    .collect(Collectors.toList());
+        } else {
+            reporteFilter = reportesClientes().stream().filter(C -> C.getNumeroIdentidad().startsWith(valor)
+                    || C.getNombre().startsWith(valor) || C.getApellido().startsWith(valor))
+                    .skip(inicio).limit(_reg_por_pagina).collect(Collectors.toList());
+        }
+        if (!reporteFilter.isEmpty()) {
+            reporteFilter.forEach(item -> {
+
+                Object[] registros = {
+                    item.getIdRegistro(),
+                    item.getNumeroIdentidad(),
+                    item.getNombre(),
+                    item.getApellido(),
+                    item.getDeudaActual(),
+                    item.getFechaDeuda(),
+                    item.getUltimoPago(),
+                    item.getFechaPago(),
+                    item.getTicket(),
+                    item.getFechaLimite()
+                };
+                modelo2.addRow(registros);
+            });
+        }
+        _tableReporte.setModel(modelo2);
+        _tableReporte.setRowHeight(30);
+        _tableReporte.getColumnModel().getColumn(0).setMaxWidth(0);
+        _tableReporte.getColumnModel().getColumn(0).setMinWidth(0);
+        _tableReporte.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+
+    public final void restartReport() {
+        searchReports("");
+    }
+
+    // </editor-fold>
+    
+    
     private List<TClientes> listClients;
 
     public void paginador(String metodo) {
@@ -338,7 +456,7 @@ public class ClientsViewModel extends Consult {
         _num_pag = 1;
         Number caja = (Number) _spinnerPaginas.getValue();
         _reg_por_pagina = caja.intValue();
-        if(!listClients.isEmpty()){
+        if (!listClients.isEmpty()) {
             _paginadorClientes = new Paginador<>(listClients, _labels.get(7), _reg_por_pagina);
             searchCLient("");
         }

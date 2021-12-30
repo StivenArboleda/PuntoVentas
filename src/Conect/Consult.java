@@ -5,6 +5,7 @@
 package Conect;
 
 import Models.TClientes;
+import Models.TReportes_clientes;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +35,23 @@ public class Consult extends ConectBD{
         }
         return cliente;
     }
-    
+    public List<TReportes_clientes> reportesClientes(){
+        String where = "";
+        
+        List<TReportes_clientes> reportes = new ArrayList();
+        String condicion = " tclientes.ID = treportes_clientes.IdCliente";
+        String campos = " tclientes.ID,tclientes.NumeroIdentidad,tclientes.Nombre,tclientes.Apellido,"
+                + "treportes_clientes.IdRegistro, treportes_clientes.DeudaActual,"
+                + "treportes_clientes.FechaDeuda, treportes_clientes.UltimoPago,"
+                + "treportes_clientes.FechaPago, treportes_clientes.Ticket,"
+                + "treportes_clientes.FechaLimite";
+        try {
+            reportes = (List<TReportes_clientes>) QR.query(getConn(), 
+                    "SELECT" + campos + " FROM treportes_clientes Inner Join tclientes ON"
+            +condicion + where, new BeanListHandler(TReportes_clientes.class));
+        } catch (SQLException e) {
+            System.out.println("Error :" + e);
+        }
+        return reportes;
+    }
 }

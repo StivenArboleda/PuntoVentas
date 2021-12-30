@@ -8,7 +8,7 @@ package Models;
  *
  * @author Stiven Arboleda
  */
-public class TReportes_clientes {
+public class TReportes_clientes extends TClientes{
     
     private int IdRegistro;
     private double DeudaActual;
