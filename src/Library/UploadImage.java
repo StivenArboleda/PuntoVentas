@@ -6,11 +6,10 @@ package Library;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.synth.SynthStyleFactory;
 
 /**
  *
@@ -72,5 +72,17 @@ public class UploadImage extends JFrame{
         }
         return baos.toByteArray();
     }
-    
+    public void byteImage(JLabel label, byte[] imgFoto){
+        try {
+            Image foto;
+            BufferedImage image;
+            ByteArrayInputStream bis = new ByteArrayInputStream(imgFoto);
+            image = ImageIO.read(bis);
+            foto = new ImageIcon(image).getImage();
+            foto = foto.getScaledInstance(140, 140, 1);
+            label.setIcon(new ImageIcon(foto));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

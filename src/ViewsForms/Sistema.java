@@ -80,12 +80,12 @@ public class Sistema extends javax.swing.JFrame {
         };
         jPanel11 = new javax.swing.JPanel();
         LabelCliente_registroPag = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        ButtonCliente1 = new javax.swing.JButton();
-        ButtonCliente2 = new javax.swing.JButton();
-        ButtonCliente3 = new javax.swing.JButton();
-        ButtonCliente4 = new javax.swing.JButton();
-        LabelCliente_registroPag1 = new javax.swing.JLabel();
+        SpinnerPaginas_cliente = new javax.swing.JSpinner();
+        ButtonCliente_Paginas2 = new javax.swing.JButton();
+        ButtonCliente_Paginas1 = new javax.swing.JButton();
+        ButtonCliente_Paginas3 = new javax.swing.JButton();
+        ButtonCliente_Paginas4 = new javax.swing.JButton();
+        LabelCliente_paginas = new javax.swing.JLabel();
         ButtonCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,9 +117,9 @@ public class Sistema extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -202,8 +202,10 @@ public class Sistema extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.setName(""); // NOI18N
 
         LabelImageCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelImageCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/logo-google_1.png"))); // NOI18N
         LabelImageCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         LabelImageCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LabelImageCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,7 +227,7 @@ public class Sistema extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LabelImageCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addComponent(LabelImageCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -376,7 +378,7 @@ public class Sistema extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelCliente_ID)
@@ -486,6 +488,16 @@ public class Sistema extends javax.swing.JFrame {
 
             }
         ));
+        Tabla_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_ClientesMouseClicked(evt);
+            }
+        });
+        Tabla_Clientes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Tabla_ClientesKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabla_Clientes);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -511,7 +523,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1074, Short.MAX_VALUE)
+            .addGap(0, 1095, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,54 +537,60 @@ public class Sistema extends javax.swing.JFrame {
         LabelCliente_registroPag.setForeground(new java.awt.Color(70, 106, 124));
         LabelCliente_registroPag.setText("Registros por páginas");
 
-        ButtonCliente1.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonCliente1.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Left.png"))); // NOI18N
-        ButtonCliente1.setBorder(null);
-        ButtonCliente1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente1ActionPerformed(evt);
+        SpinnerPaginas_cliente.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SpinnerPaginas_clienteStateChanged(evt);
             }
         });
 
-        ButtonCliente2.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonCliente2.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Left-Total.png"))); // NOI18N
-        ButtonCliente2.setBorder(null);
-        ButtonCliente2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCliente_Paginas2.setBackground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas2.setForeground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Left.png"))); // NOI18N
+        ButtonCliente_Paginas2.setBorder(null);
+        ButtonCliente_Paginas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente2ActionPerformed(evt);
+                ButtonCliente_Paginas2ActionPerformed(evt);
             }
         });
 
-        ButtonCliente3.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonCliente3.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Right.png"))); // NOI18N
-        ButtonCliente3.setBorder(null);
-        ButtonCliente3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente3.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCliente_Paginas1.setBackground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas1.setForeground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Left-Total.png"))); // NOI18N
+        ButtonCliente_Paginas1.setBorder(null);
+        ButtonCliente_Paginas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente3ActionPerformed(evt);
+                ButtonCliente_Paginas1ActionPerformed(evt);
             }
         });
 
-        ButtonCliente4.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonCliente4.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonCliente4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Right-Total.png"))); // NOI18N
-        ButtonCliente4.setBorder(null);
-        ButtonCliente4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente4.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCliente_Paginas3.setBackground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas3.setForeground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Right.png"))); // NOI18N
+        ButtonCliente_Paginas3.setBorder(null);
+        ButtonCliente_Paginas3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente4ActionPerformed(evt);
+                ButtonCliente_Paginas3ActionPerformed(evt);
             }
         });
 
-        LabelCliente_registroPag1.setBackground(new java.awt.Color(70, 106, 124));
-        LabelCliente_registroPag1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        LabelCliente_registroPag1.setForeground(new java.awt.Color(70, 106, 124));
-        LabelCliente_registroPag1.setText("Páginas");
+        ButtonCliente_Paginas4.setBackground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas4.setForeground(new java.awt.Color(102, 102, 102));
+        ButtonCliente_Paginas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Right-Total.png"))); // NOI18N
+        ButtonCliente_Paginas4.setBorder(null);
+        ButtonCliente_Paginas4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCliente_Paginas4ActionPerformed(evt);
+            }
+        });
+
+        LabelCliente_paginas.setBackground(new java.awt.Color(70, 106, 124));
+        LabelCliente_paginas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        LabelCliente_paginas.setForeground(new java.awt.Color(70, 106, 124));
+        LabelCliente_paginas.setText("Páginas");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -585,22 +603,22 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(SpinnerPaginas_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(316, 316, 316)
-                                .addComponent(ButtonCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ButtonCliente_Paginas1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(LabelCliente_registroPag))
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ButtonCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ButtonCliente_Paginas2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ButtonCliente3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ButtonCliente_Paginas3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(ButtonCliente4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ButtonCliente_Paginas4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(LabelCliente_registroPag1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(31, 31, 31)
+                                .addComponent(LabelCliente_paginas, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -615,17 +633,17 @@ public class Sistema extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(LabelCliente_registroPag)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SpinnerPaginas_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(LabelCliente_registroPag1)
+                        .addComponent(LabelCliente_paginas)
                         .addGap(14, 14, 14)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ButtonCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonCliente_Paginas2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(ButtonCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ButtonCliente_Paginas1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 2, Short.MAX_VALUE))
-                            .addComponent(ButtonCliente3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ButtonCliente4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(ButtonCliente_Paginas3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonCliente_Paginas4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -717,7 +735,7 @@ public class Sistema extends javax.swing.JFrame {
         labels.add(LabelCliente_Telefono);
         labels.add(LabelCliente_Direccion);
         labels.add(LabelImageCliente);
-        
+        labels.add(LabelCliente_paginas);
         ArrayList<JTextField> textFiled = new ArrayList();
         textFiled.add(TextFieldCliente_ID);
         textFiled.add(TextFieldCliente_name);
@@ -728,7 +746,8 @@ public class Sistema extends javax.swing.JFrame {
                   
         Object[] objects = {
             CheckBoxCliente_Credito, 
-            Tabla_Clientes
+            Tabla_Clientes,
+            SpinnerPaginas_cliente
         };
         client = new ClientsViewModel(objects, labels, textFiled);
         
@@ -829,21 +848,37 @@ public class Sistema extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TextFieldCliente_direccionKeyReleased
 
-    private void ButtonCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente1ActionPerformed
+    private void ButtonCliente_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas2ActionPerformed
+        client.paginador("Anterior");
+    }//GEN-LAST:event_ButtonCliente_Paginas2ActionPerformed
 
-    private void ButtonCliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente2ActionPerformed
+    private void ButtonCliente_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas1ActionPerformed
+        client.paginador("Primero");
+    }//GEN-LAST:event_ButtonCliente_Paginas1ActionPerformed
 
-    private void ButtonCliente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente3ActionPerformed
+    private void ButtonCliente_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas3ActionPerformed
+        client.paginador("Siguiente");
+    }//GEN-LAST:event_ButtonCliente_Paginas3ActionPerformed
 
-    private void ButtonCliente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente4ActionPerformed
+    private void ButtonCliente_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas4ActionPerformed
+        client.paginador("Ultimo");
+    }//GEN-LAST:event_ButtonCliente_Paginas4ActionPerformed
+
+    private void SpinnerPaginas_clienteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_clienteStateChanged
+        client.registro_Paginas();
+    }//GEN-LAST:event_SpinnerPaginas_clienteStateChanged
+
+    private void Tabla_ClientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tabla_ClientesKeyReleased
+        if(Tabla_Clientes.getSelectedRows().length > 0){
+            client.getClients();
+        }
+    }//GEN-LAST:event_Tabla_ClientesKeyReleased
+
+    private void Tabla_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_ClientesMouseClicked
+        if(Tabla_Clientes.getSelectedRows().length > 0){
+            client.getClients();
+        }
+    }//GEN-LAST:event_Tabla_ClientesMouseClicked
     
     // </editor-fold>
     /**
@@ -883,12 +918,12 @@ public class Sistema extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCliente;
-    private javax.swing.JButton ButtonCliente1;
-    private javax.swing.JButton ButtonCliente2;
-    private javax.swing.JButton ButtonCliente3;
-    private javax.swing.JButton ButtonCliente4;
     private javax.swing.JButton ButtonCliente_Add;
     private javax.swing.JButton ButtonCliente_Cancel;
+    private javax.swing.JButton ButtonCliente_Paginas1;
+    private javax.swing.JButton ButtonCliente_Paginas2;
+    private javax.swing.JButton ButtonCliente_Paginas3;
+    private javax.swing.JButton ButtonCliente_Paginas4;
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
     private javax.swing.JLabel LabelCliente_Apellido;
     private javax.swing.JLabel LabelCliente_Direccion;
@@ -896,9 +931,10 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCliente_ID;
     private javax.swing.JLabel LabelCliente_Telefono;
     private javax.swing.JLabel LabelCliente_name;
+    private javax.swing.JLabel LabelCliente_paginas;
     private javax.swing.JLabel LabelCliente_registroPag;
-    private javax.swing.JLabel LabelCliente_registroPag1;
     private javax.swing.JLabel LabelImageCliente;
+    private javax.swing.JSpinner SpinnerPaginas_cliente;
     private javax.swing.JTable Tabla_Clientes;
     private javax.swing.JTextField TextFieldCliente_ID;
     private javax.swing.JTextField TextFieldCliente_direccion;
@@ -922,7 +958,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane_cliente;
     private javax.swing.JTabbedPane jTabbedPane_principal;

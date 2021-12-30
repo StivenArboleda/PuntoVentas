@@ -82,9 +82,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel2" pref="64" max="32767" attributes="0"/>
+                      <Component id="jLabel1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -425,7 +425,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel8" max="32767" attributes="0"/>
+                                  <Component id="jPanel8" pref="138" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="LabelCliente_ID" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -485,6 +485,7 @@
                                 <LineBorder/>
                               </Border>
                             </Property>
+                            <Property name="name" type="java.lang.String" value="" noResource="true"/>
                           </Properties>
 
                           <Layout>
@@ -501,7 +502,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="LabelImageCliente" pref="113" max="32767" attributes="0"/>
+                                      <Component id="LabelImageCliente" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -511,6 +512,9 @@
                             <Component class="javax.swing.JLabel" name="LabelImageCliente">
                               <Properties>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/Resources/logo-google_1.png"/>
+                                </Property>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder/>
@@ -774,25 +778,25 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="jSpinner1" min="-2" pref="79" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Component id="SpinnerPaginas_cliente" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
-                                          <Component id="ButtonCliente2" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <Component id="ButtonCliente_Paginas1" min="-2" pref="69" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="LabelCliente_registroPag" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="ButtonCliente1" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <Component id="ButtonCliente_Paginas2" min="-2" pref="69" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="ButtonCliente3" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <Component id="ButtonCliente_Paginas3" min="-2" pref="69" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="ButtonCliente4" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <Component id="ButtonCliente_Paginas4" min="-2" pref="69" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_registroPag1" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_paginas" min="-2" pref="102" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -813,19 +817,19 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="LabelCliente_registroPag" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jSpinner1" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="SpinnerPaginas_cliente" min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="LabelCliente_registroPag1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelCliente_paginas" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ButtonCliente1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="ButtonCliente_Paginas2" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="ButtonCliente2" min="-2" pref="35" max="-2" attributes="0"/>
+                                          <Component id="ButtonCliente_Paginas1" min="-2" pref="35" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="ButtonCliente3" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="ButtonCliente4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="ButtonCliente_Paginas3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="ButtonCliente_Paginas4" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -897,6 +901,10 @@
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Tabla_ClientesMouseClicked"/>
+                                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Tabla_ClientesKeyReleased"/>
+                              </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="Tabla_Clientes = new javax.swing.JTable(){&#xd;&#xa;    public boolean isCellEditTable(int rowIndex, int colIndex){&#xd;&#xa;        return false;&#xd;&#xa;    }&#xd;&#xa;}"/>
                               </AuxValues>
@@ -917,7 +925,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="1074" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="1095" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -943,9 +951,12 @@
                     <Property name="text" type="java.lang.String" value="Registros por p&#xe1;ginas"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinner1">
+                <Component class="javax.swing.JSpinner" name="SpinnerPaginas_cliente">
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="SpinnerPaginas_clienteStateChanged"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="ButtonCliente1">
+                <Component class="javax.swing.JButton" name="ButtonCliente_Paginas2">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -964,10 +975,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente_Paginas2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="ButtonCliente2">
+                <Component class="javax.swing.JButton" name="ButtonCliente_Paginas1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -986,10 +997,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente_Paginas1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="ButtonCliente3">
+                <Component class="javax.swing.JButton" name="ButtonCliente_Paginas3">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -1008,10 +1019,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente_Paginas3ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="ButtonCliente4">
+                <Component class="javax.swing.JButton" name="ButtonCliente_Paginas4">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -1030,10 +1041,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCliente_Paginas4ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabelCliente_registroPag1">
+                <Component class="javax.swing.JLabel" name="LabelCliente_paginas">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="7c" green="6a" red="46" type="rgb"/>
