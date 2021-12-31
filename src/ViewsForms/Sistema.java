@@ -1357,7 +1357,7 @@ public class Sistema extends javax.swing.JFrame {
         jTabbedPane_principal.setSelectedIndex(2);
         ButtonCliente1.setEnabled(true);
         ButtonConfiguracion.setEnabled(false);
-
+        config = new ConfigurationViewModel(_radio);
     }//GEN-LAST:event_ButtonConfiguracionActionPerformed
 
     // </editor-fold>

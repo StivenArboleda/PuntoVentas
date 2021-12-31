@@ -33,6 +33,7 @@ public class ConfigurationViewModel extends Consult {
     }
 
     private void RadioEvent() {
+
         _radio.get(0).addActionListener((ActionEvent e) -> {
 
             TypeMoney("COP", _radio.get(0).isSelected());
@@ -67,12 +68,10 @@ public class ConfigurationViewModel extends Consult {
             TConfiguration data = config.get(0);
             Mony = data.getTypeMoney();
             switch (Mony) {
-                case "COP":
+                case "COP" ->
                     _radio.get(0).setSelected(true);
-                    break;
-                case "USD":
+                case "USD" ->
                     _radio.get(1).setSelected(true);
-                    break;
             }
         }
 
@@ -96,8 +95,7 @@ public class ConfigurationViewModel extends Consult {
 
                     TConfiguration data = config.get(0);
                     sqlConfig = "UPDATE tconfiguration SET TypeMoney = ? WHERE ID =" + data.getID();
-                    //sqlConfig = "UPDATE tconfiguration SET TypeMoney = ? WHERE ID =" + data.getID();
-
+                   
                     if (data.getTypeMoney().equals(typeMoney)) {
                         Mony = typeMoney;
                     } else {
