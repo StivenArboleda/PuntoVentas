@@ -8,12 +8,15 @@ package Models;
  *
  * @author Stiven Arboleda
  */
-public class TReportes_clientes extends TClientes{
-    
+public class TReportes_clientes extends TClientes {
+
     private int IdRegistro;
     private double DeudaActual;
+    private double Deuda;
+    private double Mensual;
+    private double Cambio;
     private String FechaDeuda;
-    private double  UltimoPago;
+    private double UltimoPago;
     private String FechaPago;
     private String Ticket;
     private String FechaLimite;
@@ -22,7 +25,6 @@ public class TReportes_clientes extends TClientes{
     public TReportes_clientes() {
     }
 
-        
     public int getIdRegistro() {
         return IdRegistro;
     }
@@ -37,6 +39,32 @@ public class TReportes_clientes extends TClientes{
 
     public void setDeudaActual(double DeudaActual) {
         this.DeudaActual = DeudaActual;
+    }
+
+    public double getDeuda() {
+        return Deuda;
+    }
+
+    public void setDeuda(double Deuda) {
+        this.Deuda = Deuda;
+    }
+
+    public double getMensual() {
+        return Mensual;
+    }
+
+    public void setMensual(double Mensual) {
+        this.Mensual = Mensual;
+    }
+    
+    @Override
+    public double getCambio() {
+        return Cambio;
+    }
+    
+    @Override
+    public void setCambio(double Cambio) {
+        this.Cambio = Cambio;
     }
 
     public String getFechaDeuda() {
@@ -86,6 +114,7 @@ public class TReportes_clientes extends TClientes{
     public void setIdCliente(int IdCliente) {
         this.IdCliente = IdCliente;
     }
+
     
-    
+
 }

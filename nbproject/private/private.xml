@@ -3,15 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/ViewModels/ConfigurationViewModel.java</file>
             <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Models/TReportes_clientes.java</file>
-            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Library/Calendario.java</file>
+            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Models/TClientes.java</file>
             <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Conect/Consult.java</file>
-            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Library/UploadImage.java</file>
+            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Library/FormatDecimal.java</file>
             <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/ViewsForms/Sistema.java</file>
-            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Library/Paginador.java</file>
             <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/ViewModels/ClientsViewModel.java</file>
-            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Library/Render_CheckBox.java</file>
             <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Library/Objects.java</file>
+            <file>file:/C:/Users/Windows%2010/Documents/NetBeansProjects/Sistema%20Punto%20de%20Ventas/src/Models/TReportes_intereses_clientes.java</file>
         </group>
     </open-files>
 </project-private>

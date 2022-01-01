@@ -36,21 +36,30 @@ public class Consult extends ConectBD{
         }
         return cliente;
     }
-    public List<TReportes_clientes> reportesClientes(){
-        String where = "";
+    
+    public List<TReportes_clientes> reportesClientes(int idCliente){
+        
+        String where = " WHERE tclientes.ID="+ idCliente;
         
         List<TReportes_clientes> reportes = new ArrayList();
-        String condicion = " tclientes.ID = treportes_clientes.IdCliente";
+        
+        String condicion1 = " tclientes.ID = treportes_clientes.IdCliente ";
+        String condicion2 = " tclientes.ID = treportes_intereses_clientes.IdCliente ";
+        
         String campos = " tclientes.ID,tclientes.NumeroIdentidad,tclientes.Nombre,tclientes.Apellido,"
-                + "treportes_clientes.IdRegistro, treportes_clientes.DeudaActual,"
-                + "treportes_clientes.FechaDeuda, treportes_clientes.UltimoPago,"
+                + "treportes_clientes.IdRegistro,treportes_clientes.DeudaActual,"
+                + "treportes_clientes.FechaDeuda,treportes_clientes.UltimoPago,"
                 + "treportes_clientes.FechaPago, treportes_clientes.Ticket,"
-                + "treportes_clientes.FechaLimite";
+                + "treportes_clientes.Deuda,treportes_clientes.Mensual,treportes_clientes.Cambio,"
+                + "treportes_clientes.FechaLimite,treportes_intereses_clientes.Intereses,"
+                + "treportes_intereses_clientes.Pago,treportes_intereses_clientes.Cambio,"
+                + "treportes_intereses_clientes.Cuotas,treportes_intereses_clientes.InteresFecha,"
+                + "treportes_intereses_clientes.TicketIntereses";
         try {
             reportes = (List<TReportes_clientes>) QR.query(getConn(), 
-                    "SELECT" + campos + " FROM treportes_clientes Inner Join tclientes ON"
-            +condicion + where, new BeanListHandler(TReportes_clientes.class));
-        } catch (SQLException e) {
+                    "SELECT" + campos + " FROM tclientes Inner Join treportes_clientes ON"
+            + condicion1 + "Inner Join treportes_intereses_clientes ON" + condicion2 + where, new BeanListHandler(TReportes_clientes.class));
+        } catch (Exception e) {
             System.out.println("Error :" + e);
         }
         return reportes;
